@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TV.Domain.Models.Language>
+
+@{
+    ViewData["Title"] = "Languages";
+}
+
+<h1>Languages</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Language</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var language in Model)
+        {
+            <tr>
+                <td>@language.Name</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@language.Id">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@language.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

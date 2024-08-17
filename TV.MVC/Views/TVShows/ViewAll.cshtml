@@ -1,0 +1,24 @@
+﻿@model TV.Domain.Models.Attachment
+
+@{
+    ViewData["Title"] = "Attachment Details";
+    var tvshowTitle = ViewBag.TVShowTitle;
+}
+
+<h2>Attachment Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">File Type</dt>
+        <dd class="col-sm-10">@Model.FileType</dd>
+
+        <dt class="col-sm-2">Path</dt>
+        <dd class="col-sm-10"><a href="@Model.Path" target="_blank">@Model.Path</a></dd>
+    </dl>
+</div>
+
+<div>
+    <a href="@Url.Action("Details", "TVShows", new { id = Model.TVShowId ,slug=tvshowTitle.Replace(" ","-").ToLower()})">Back to TV Show</a>
+</div>

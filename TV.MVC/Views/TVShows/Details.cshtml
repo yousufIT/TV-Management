@@ -1,0 +1,56 @@
+﻿@model TV.Domain.Models.TVShow
+
+@{
+    ViewData["Title"] = "TV Show Details";
+}
+
+<div class="col mb-5" style="width:60%">
+    <div class="card h-100">
+        <!-- صورة العرض التلفزيوني -->
+        <img class="card-img-top" src="~/img/TV_Show/@(Model.Id).jpg" alt="..." />
+
+        <!-- تفاصيل العرض التلفزيوني -->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- اسم العرض -->
+                <h5 class="fw-bolder">@Model.Title</h5>
+                <!-- تقييم العرض -->
+                @Model.Rating
+            </div>
+
+            <!-- عرض اللغات المرتبطة -->
+            <div>
+                <h6>Languages:</h6>
+                @if (Model.LanguageTVShows != null && Model.LanguageTVShows.Any())
+                {
+                    <ul>
+                        @foreach (var languageTVShow in Model.LanguageTVShows)
+                        {
+                            <li>@languageTVShow.Language.Name</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>No languages available for this TV show.</p>
+                }
+            </div>
+        </div>
+
+        <!-- روابط الإجراءات -->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" style="display: flex; justify-content: space-around;">
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("Update", "TVShows", new { id = Model.Id })">Update</a>
+            </div>
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("Delete", "TVShows", new { id = Model.Id })">Delete</a>
+            </div>
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("CreateForTVShow", "Languages", new { id = Model.Id })">Add Language for this TV Show</a>
+            </div>
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("ViewAll", "TVShows", new { id = Model.Id })">View Attachment</a>
+            </div>
+        </div>
+    </div>
+</div>

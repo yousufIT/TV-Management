@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TV Show Management</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Amazon.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">TV Show Manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/TVShows/Index">Home</a></li>
+                    <!-- TV Show Management Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarTVShowDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">TV Shows</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarTVShowDropdown">
+                            <li><a class="dropdown-item" href="/TVShows/Index">All TV Shows</a></li>
+                            <li><a class="dropdown-item" href="/TVShows/GetByLanguage/English">TV Shows by Language</a></li>
+                            <li><a class="dropdown-item" href="/TVShows/Create">Add New TV Show</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="/TVShows/Details/1">Sample TV Show Details</a></li>
+                        </ul>
+                    </li>
+                    <!-- Language Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarLanguageDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Languages</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarLanguageDropdown">
+                            <li><a class="dropdown-item" href="/Languages/Index">All Languages</a></li>
+                            <li><a class="dropdown-item" href="/Languages/Create">Add New Language</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" style="justify-content:space-around">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <!-- Show Logout button if the user is logged in -->
+                        <a class="btn btn-outline-dark" href="/Identity/Account/Logout">
+                            <i class="bi-person-fill me-1"></i>
+                            Logout
+                        </a>
+                    }
+                    else
+                    {
+                        <!-- Show Login and Register buttons if the user is not logged in -->
+                        <a class="btn btn-outline-dark" href="/Identity/Account/Login">
+                            <i class="bi-person-fill me-1"></i>
+                            Login
+                        </a>
+                        <a class="btn btn-outline-dark" href="/Identity/Account/Register">
+                            <i class="bi-person-fill me-1"></i>
+                            Register
+                        </a>
+                    }
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Manage Your Favorite TV Shows</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Effortlessly organize and track all your TV show data</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; TV Show Manager 2024</p></div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
