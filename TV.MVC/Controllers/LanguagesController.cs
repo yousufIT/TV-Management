@@ -44,7 +44,6 @@ public class LanguagesController : Controller
     }
     public IActionResult CreateForTVShow(int id)
     {
-        // Assign the TVShowId to ViewData
         ViewData["TVShowId"] = id;
         return View();
     }

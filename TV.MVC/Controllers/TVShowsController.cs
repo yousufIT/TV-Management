@@ -88,8 +88,6 @@ namespace TV.MVC.Controllers
             var tvshow = tVShowRepository.GetById(id);
             if (tvshow == null)
                 return NotFound();
-
-            // Update TVShow properties
             tvshow.ReleaseDate = model.ReleaseDate;
             tvshow.Title = model.Title;
             tvshow.URL = model.URL;
@@ -97,15 +95,13 @@ namespace TV.MVC.Controllers
 
             if (attachment != null && attachment.Length > 0)
             {
-                // Save the uploaded file to the server synchronously
                 var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", $"{tvshow.Id}.jpg");
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    attachment.CopyTo(stream); // Use synchronous method
+                    attachment.CopyTo(stream); 
                 }
 
-                // Update the Attachment record synchronously
                 var attachmentEntity = attachmentRepository.GetById(id);
                 if (attachmentEntity != null)
                 {
@@ -127,7 +123,7 @@ namespace TV.MVC.Controllers
             }
 
             tVShowRepository.Update(tvshow);
-            return RedirectToAction("Index"); // Ensure a return statement is present
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Delete(int id)
@@ -147,25 +143,20 @@ namespace TV.MVC.Controllers
             if (tvshow == null)
                 return NotFound();
 
-            // Delete the attachment if it exists
             if (tvshow.AttachmentId!=null)
             {
                 var attachment = attachmentRepository.GetById(tvshow.AttachmentId);
                 if (attachment != null)
                 {
-                    // Delete the file from the file system
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", $"{attachment.Id}.jpg");
                     if (System.IO.File.Exists(filePath))
                     {
                         System.IO.File.Delete(filePath);
                     }
-
-                    // Delete the attachment record from the database
                     attachmentRepository.Delete(attachment.Id);
                 }
             }
 
-            // Delete the TV Show record
             tVShowRepository.Delete(id);
 
             return RedirectToAction("Index");
@@ -178,9 +169,9 @@ namespace TV.MVC.Controllers
             var tvShows = tVShowRepository.GetByLanguage(language);
             if (tvShows == null || !tvShows.Any())
             {
-                return NotFound(); // Return a 404 if no TV shows are found
+                return NotFound(); 
             }
-            return View(tvShows); // Pass the list of TV shows to the view
+            return View(tvShows); 
         }
         [AllowAnonymous]
         public IActionResult ViewAll(int id)

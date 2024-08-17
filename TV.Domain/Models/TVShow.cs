@@ -17,7 +17,6 @@ namespace TV.Domain.Models
         public Attachment Attachment { get; set; }
         public bool IsDeleted { get; set; }
 
-        // علاقات
         public List<LanguageTVShow> LanguageTVShows { get; set; }
         public TVShow() 
         {
