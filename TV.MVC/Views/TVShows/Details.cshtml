@@ -11,14 +11,15 @@
         <div class="card-body p-4">
             <div class="text-center">
                 <h5 class="fw-bolder">@Model.Title</h5>
-                @Model.Rating
+                @Model.Rating <br />
+                <a  href="@Model.URL">@Model.URL</a>
             </div>
 
             <div>
                 <h6>Languages:</h6>
                 @if (Model.LanguageTVShows != null && Model.LanguageTVShows.Any())
                 {
-                    <ul>
+                    <ul >
                         @foreach (var languageTVShow in Model.LanguageTVShows)
                         {
                             <li>@languageTVShow.Language.Name</li>
@@ -30,20 +31,26 @@
                     <p>No languages available for this TV show.</p>
                 }
             </div>
+           
+            
         </div>
 
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" style="display: flex; justify-content: space-around;">
             <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("Update", "TVShows", new { id = Model.Id })">Update</a>
+                <a class="btn btn-outline-dark mt-auto"
+                href="@Url.Action("Update", "TVShows", new { id = Model.Id })">Update</a>
             </div>
             <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("Delete", "TVShows", new { id = Model.Id })">Delete</a>
+                <a class="btn btn-outline-dark mt-auto"
+                href="@Url.Action("Delete", "TVShows", new { id = Model.Id })">Delete</a>
             </div>
             <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("CreateForTVShow", "Languages", new { id = Model.Id })">Add Language for this TV Show</a>
+                <a class="btn btn-outline-dark mt-auto"
+                href="@Url.Action("CreateForTVShow", "Languages", new { id = Model.Id })">Add Language for this TV Show</a>
             </div>
             <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("ViewAll", "TVShows", new { id = Model.Id })">View Attachment</a>
+                <a class="btn btn-outline-dark mt-auto"
+                href="@Url.Action("ViewAll", "TVShows", new { id = Model.Id })">View Attachment</a>
             </div>
         </div>
     </div>
