@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TV.MVC", "TV.MVC\TV.MVC.csproj", "{F3DC2EDB-94A1-4736-83F8-A3FEA8A51FDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TV.MVC", "TV.MVC\TV.MVC.csproj", "{F3DC2EDB-94A1-4736-83F8-A3FEA8A51FDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TV.Domain", "TV.Domain\TV.Domain.csproj", "{6C970A9F-DC54-4341-8CDE-2799E1A838AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TV.Domain", "TV.Domain\TV.Domain.csproj", "{6C970A9F-DC54-4341-8CDE-2799E1A838AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TV.Infrastructure", "TV.Infrastructure\TV.Infrastructure.csproj", "{790E716B-FD41-42F9-9FFC-093C202BE9E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TV.Infrastructure", "TV.Infrastructure\TV.Infrastructure.csproj", "{790E716B-FD41-42F9-9FFC-093C202BE9E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
